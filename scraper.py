@@ -19,7 +19,7 @@ for speaker in speakers['data']:
   print speaker['id']+','+speaker['name'].encode('ascii', 'replace')
 
 #make edges
-print 'node1 VARCHAR,node2 VARCHAR,label VARCHAR'
+print 'edgedef>node1 VARCHAR,node2 VARCHAR,label VARCHAR'
 response = requests.get(baseUrl+eventId+'/sessions').content
 sessions = json.loads(response)
 for session in sessions['data']:
