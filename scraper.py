@@ -28,5 +28,5 @@ for session in sessions['data']:
   if len(session['speakers']) > 1:
     for i, speaker in enumerate(session['speakers']):
       for y in range (i, len(session['speakers'])-1):
-        print session['speakers'][i]['id']+','+session['speakers'][y]['id']+','+session['title'].encode('ascii', 'replace')
+        print session['speakers'][i]['id']+','+session['speakers'][y+1]['id']+','+session['title'].encode('ascii', 'replace')
 quit()
