@@ -1,23 +1,29 @@
-# This is a template for a Python scraper on morph.io (https://morph.io)
-# including some code snippets below that you should find helpful
+import os
+import requests
+import json
 
-# import scraperwiki
-# import lxml.html
-#
-# # Read in a page
-# html = scraperwiki.scrape("http://foo.com")
-#
-# # Find something on the page using css selectors
-# root = lxml.html.fromstring(html)
-# root.cssselect("div[align='left']")
-#
-# # Write out to the sqlite database using scraperwiki library
-# scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
-#
-# # An arbitrary query against the database
-# scraperwiki.sql.select("* from data where 'name'='peter'")
+baseUrl = 'http://data.re-publica.de/api/'
+speaker_nodes = []
+speaker_edges = []
+if 'MORPH_EVENTID' in os.environ: 
+  eventId = os.environ['MORPH_EVENTID']
+else:
+  print 'Please add the ID of the event you want to analyze with the name "MORPH_EVENTIF" to the morph.io settings of this scraper'
+  print 'See http://data.re-publica.de/doc/ to find supported events'
+  
+#make nodes
+print 'nodedef>name VARCHAR,label VARCHAR'
+response = requests.get(baseUrl+eventId+'/speakers').content
+speakers = json.loads(response)
+for speaker in speakers['data']:
+  print speaker['id']+','speaker['name']
 
-# You don't have to do things with the ScraperWiki and lxml libraries. You can use whatever libraries are installed
-# on morph.io for Python (https://github.com/openaustralia/morph-docker-python/blob/master/pip_requirements.txt) and all that matters
-# is that your final data is written to an Sqlite database called data.sqlite in the current working directory which
-# has at least a table called data.
+#make edges
+print 'node1 VARCHAR,node2 VARCHAR,label VARCHAR'
+response = requests.get(baseUrl+eventId+'/sessions').content
+sessions = json.loads(response)
+for session in sessions['data']:
+  if len(session['speakers']) > 1:
+    for i-1, speaker in session['speakers']:
+      print speakers[i]['id']+','speakers[i+1]['id']+','+session['title']
+quit()
