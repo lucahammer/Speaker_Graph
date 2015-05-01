@@ -12,6 +12,7 @@ else:
   print 'See http://data.re-publica.de/doc/ to find supported events'
   
 #make nodes
+print 'Copy the following output, paste it into a textfile and save it with ".gdf" as file extension to open it with Gephi'
 print 'nodedef>name VARCHAR,label VARCHAR'
 response = requests.get(baseUrl+eventId+'/speakers').content
 speakers = json.loads(response)
