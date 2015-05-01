@@ -16,7 +16,7 @@ print 'nodedef>name VARCHAR,label VARCHAR'
 response = requests.get(baseUrl+eventId+'/speakers').content
 speakers = json.loads(response)
 for speaker in speakers['data']:
-  print speaker['id']+','+speaker['name']
+  print speaker['id']+','+speaker['name'].encode('ascii', 'replace')
 
 #make edges
 print 'node1 VARCHAR,node2 VARCHAR,label VARCHAR'
@@ -26,5 +26,5 @@ for session in sessions['data']:
   if len(session['speakers']) > 1:
     for i, speaker in session['speakers']:
       if i < len(session['speakers']):
-        print speakers[i]['id']+','+speakers[i+1]['id']+','+session['title']
+        print speakers[i]['id']+','+speakers[i+1]['id']+','+session['title'].encode('ascii', 'replace')
 quit()
