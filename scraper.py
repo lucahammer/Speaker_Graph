@@ -8,7 +8,7 @@ speaker_edges = []
 if 'MORPH_EVENTID' in os.environ: 
   eventId = os.environ['MORPH_EVENTID']
 else:
-  print 'Please add the ID of the event you want to analyze with the name "MORPH_EVENTIF" to the morph.io settings of this scraper'
+  print 'Please add the ID of the event you want to analyze with the name "MORPH_EVENTID" to the morph.io settings of this scraper'
   print 'See http://data.re-publica.de/doc/ to find supported events'
   
 #make nodes
