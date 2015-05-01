@@ -26,7 +26,7 @@ response = requests.get(baseUrl+eventId+'/sessions').content
 sessions = json.loads(response)
 for session in sessions['data']:
   if len(session['speakers']) > 1:
-    for i, speaker in session['speakers']:
+    for i, speaker in enumerate(session['speakers']):
       print i
       if i < len(session['speakers']):
         print speakers[i]['id']+','+speakers[i+1]['id']+','+session['title'].encode('ascii', 'replace')
