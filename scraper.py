@@ -16,7 +16,7 @@ print 'nodedef>name VARCHAR,label VARCHAR'
 response = requests.get(baseUrl+eventId+'/speakers').content
 speakers = json.loads(response)
 for speaker in speakers['data']:
-  print speaker['id']+','speaker['name']
+  print speaker['id']+','+speaker['name']
 
 #make edges
 print 'node1 VARCHAR,node2 VARCHAR,label VARCHAR'
