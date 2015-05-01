@@ -27,8 +27,6 @@ sessions = json.loads(response)
 for session in sessions['data']:
   if len(session['speakers']) > 1:
     for i, speaker in enumerate(session['speakers']):
-      print i
-      print len(session['speakers'])
       if i < len(session['speakers'])-1:
         print session['speakers'][i]['id']+','+session['speakers'][i+1]['id']+','+session['title'].encode('ascii', 'replace')
 quit()
