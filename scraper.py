@@ -12,13 +12,11 @@ else:
   print 'See http://data.re-publica.de/doc/ to find supported events'
   
 #make nodes
-'''
 print 'nodedef>name VARCHAR,label VARCHAR'
 response = requests.get(baseUrl+eventId+'/speakers').content
 speakers = json.loads(response)
 for speaker in speakers['data']:
   print speaker['id']+','+speaker['name'].encode('ascii', 'replace')
-'''
 
 #make edges
 print 'node1 VARCHAR,node2 VARCHAR,label VARCHAR'
@@ -29,4 +27,5 @@ for session in sessions['data']:
     for i, speaker in enumerate(session['speakers']):
       for y in range (i, len(session['speakers'])-1):
         print session['speakers'][i]['id']+','+session['speakers'][y+1]['id']+','+session['title'].encode('ascii', 'replace')
+
 quit()
