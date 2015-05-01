@@ -25,5 +25,5 @@ sessions = json.loads(response)
 for session in sessions['data']:
   if len(session['speakers']) > 1:
     for i-1, speaker in session['speakers']:
-      print speakers[i]['id']+','speakers[i+1]['id']+','+session['title']
+      print speakers[i]['id']+','+speakers[i+1]['id']+','+session['title']
 quit()
