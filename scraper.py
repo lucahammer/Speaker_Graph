@@ -25,7 +25,7 @@ for speaker in speakers['data']:
   for link in speaker['links']:
     m = re.match("http.*://twitter.com/\w*", link['url'])
     if m:
-      print m
+      print link['url']
   '''
   print (speaker['id']+','+speaker['name'].encode('ascii', 'replace'))
 
