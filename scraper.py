@@ -23,7 +23,7 @@ import re
 
 for speaker in speakers['data']:
   for link in speaker['links']:
-    m = re.match("http.*://twitter.com/\w*", speaker['url'])
+    m = re.match("http.*://twitter.com/\w*", link['url'])
     if m:
       print m.group(1)
   '''
