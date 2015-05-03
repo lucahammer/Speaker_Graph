@@ -16,6 +16,13 @@ print ('Copy the following output, paste it into a textfile and save it with ".g
 print ('nodedef>name VARCHAR,label VARCHAR')
 response = requests.get(baseUrl+eventId+'/speakers').content
 speakers = json.loads(response)
+
+import re 
+m = re.match("http.*://twitter.com/\w*", response)
+if m:
+    print m.group(1)
+
+'''
 for speaker in speakers['data']:
   print (speaker['id']+','+speaker['name'].encode('ascii', 'replace'))
 
