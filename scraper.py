@@ -18,12 +18,14 @@ response = requests.get(baseUrl+eventId+'/speakers').content
 speakers = json.loads(response)
 
 import re 
-m = re.match("http.*://twitter.com/\w*", response)
-if m:
-    print m.group(1)
 
-'''
-for speaker in speakers['data']:
+
+
+for speaker in speakers['data']['links']:
+  m = re.match("http.*://twitter.com/\w*", response)
+  if m:
+    print m.group(1)
+  '''
   print (speaker['id']+','+speaker['name'].encode('ascii', 'replace'))
 
 #make edges
